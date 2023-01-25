@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/elementTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginBottom="533dp"
+        android:text="Computer"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="251dp" />
+
+    <Button
+        android:id="@+id/elementOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="598dp"
+        android:text="Employee"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="203dp" />
+
+    <Button
+        android:id="@+id/elementThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="467dp"
+        android:text="Position"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="297dp" />
+
+    <Button
+        android:id="@+id/elementFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="403dp"
+        android:text="Room"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="344dp" />
+
+    <Button
+        android:id="@+id/btn_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="189dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="599dp"
+        android:text="Open" />
+
+    <Button
+        android:id="@+id/btn_open2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="151dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="532dp"
+        android:text="Open" />
+
+    <Button
+        android:id="@+id/btn_open3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="219dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="464dp"
+        android:text="Open" />
+
+    <Button
+        android:id="@+id/btn_open4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="186dp"
+        android:layout_marginTop="281dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="402dp"
+        android:text="Open" />
+</RelativeLayout>
