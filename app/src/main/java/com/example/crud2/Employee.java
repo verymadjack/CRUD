@@ -2,7 +2,9 @@ package com.example.crud2;
 
 import com.google.firebase.database.Exclude;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
 
     @Exclude
     private String key;

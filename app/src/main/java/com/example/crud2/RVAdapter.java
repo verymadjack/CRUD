@@ -1,6 +1,7 @@
 package com.example.crud2;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -47,7 +49,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 switch (item.getItemId())
                 {
                     case R.id.menu_edit:
-                        Intent intent = new Intent(context,MainActivity.class);
+                        Intent intent = new Intent(context,openElementOne.class);
                         intent.putExtra("EDIT", emp);
                         context.startActivity(intent);
                         break;
