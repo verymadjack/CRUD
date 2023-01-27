@@ -32,7 +32,7 @@ public class Position {
         return salary;
     }
 
-    public void setSalary(String position) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
@@ -40,7 +40,7 @@ public class Position {
         return hours;
     }
 
-    public void setHours(String age) {
+    public void setHours(String hours) {
         this.hours = hours;
     }
 }

@@ -36,6 +36,7 @@ public class RVAdapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         Position pos = list.get(position);
         vh.txt_name1.setText(pos.getPosName());
         vh.txt_name21.setText(pos.getSalary());
+        vh.txt_name213.setText(pos.getSalary());
 
     }
 

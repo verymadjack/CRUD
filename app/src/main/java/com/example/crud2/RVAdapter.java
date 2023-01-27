@@ -36,6 +36,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         Employee emp = list.get(position);
         vh.txt_name.setText(emp.getName());
         vh.txt_name2.setText(emp.getPosition());
+        vh.txt_name3.setText(emp.getAge());
 
     }
 
