@@ -1,9 +1,12 @@
 package com.example.crud2;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Context;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +40,32 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         vh.txt_name.setText(emp.getName());
         vh.txt_name2.setText(emp.getPosition());
         vh.txt_name3.setText(emp.getAge());
+        vh.txt_option.setOnClickListener(v->{
+            PopupMenu popupMenu = new PopupMenu(context,vh.txt_option);
+            popupMenu.inflate(R.menu.option_menu);
+            popupMenu.setOnMenuItemClickListener(item->{
+                switch (item.getItemId())
+                {
+                    case R.id.menu_edit:
+                        Intent intent = new Intent(context,MainActivity.class);
+                        intent.putExtra("EDIT", emp);
+                        context.startActivity(intent);
+                        break;
+                    case R.id.menu_delete:
+                        DAOEmployee daoEmployee = new DAOEmployee();
+                        daoEmployee.remove(emp.getKey()).addOnSuccessListener(suc->{
+                            Toast.makeText(context,"record is deleted", Toast.LENGTH_SHORT).show();
+                            notifyItemRemoved(position);
+
+                        }).addOnFailureListener(er->{
+                            Toast.makeText(context,""+er.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
+                        break;
+                }
+                return false;
+            });
+            popupMenu.show();
+        });
 
     }
 

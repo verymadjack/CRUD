@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class openElementOne extends AppCompatActivity {
 
     @Override
@@ -24,13 +26,43 @@ public class openElementOne extends AppCompatActivity {
         EditText editTextThree = findViewById(R.id.elementOneEdit3);
         Button buttonUpload = findViewById(R.id.elementOneButton);
         DAOEmployee daoOne = new DAOEmployee();
+        Employee emp_edit = (Employee)getIntent().getSerializableExtra("EDIT");
+        if(emp_edit != null)
+        {
+            buttonUpload.setText("UPDATE");
+            editTextOne.setText(emp_edit.getName());
+            editTextTwo.setText(emp_edit.getPosition());
+            editTextThree.setText(emp_edit.getAge());
+
+        }
+        else{
+            buttonUpload.setText("SUBMIT");
+
+        }
+
         buttonUpload.setOnClickListener(v->{
             Employee emp = new Employee(editTextOne.getText().toString(),editTextTwo.getText().toString(),editTextThree.getText().toString());
-            daoOne.add(emp).addOnSuccessListener(suc->{
-                Toast.makeText(this,"Record inserted", Toast.LENGTH_SHORT).show();
-            }).addOnFailureListener(er->{
-                Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
-            });
+            if(emp_edit==null) {
+                daoOne.add(emp).addOnSuccessListener(suc -> {
+                    Toast.makeText(this, "Record inserted", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(er -> {
+                    Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+            else
+            {
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("name", editTextOne.getText().toString());
+                hashMap.put("position", editTextTwo.getText().toString());
+                hashMap.put("age", editTextThree.getText().toString());
+                daoOne.update(emp_edit.getKey(), hashMap).addOnSuccessListener(suc->{
+                    Toast.makeText(this,"record is updated", Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }).addOnFailureListener(er->{
+                    Toast.makeText(this, ""+ er.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
         });
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");

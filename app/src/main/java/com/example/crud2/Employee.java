@@ -1,14 +1,10 @@
 package com.example.crud2;
 
+import com.google.firebase.database.Exclude;
+
 public class Employee {
-    public String getKey() {
-        return key;
-    }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
-
+    @Exclude
     private String key;
     private String name;
     private String position;
@@ -42,5 +38,13 @@ public class Employee {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }
