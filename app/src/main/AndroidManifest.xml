@@ -27,6 +27,20 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".RVActivity3"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RVActivity4"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".openElementFour"
             android:exported="false">
             <meta-data

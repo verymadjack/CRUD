@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         });
         Button btn_open = findViewById(R.id.btn_open);
         Button btn_open2 = findViewById(R.id.btn_open2);
+        Button btn_open3 = findViewById(R.id.btn_open3);
+        Button btn_open4 = findViewById(R.id.btn_open4);
         btn_open.setOnClickListener(v->
         {
             Intent intent = new Intent(MainActivity.this,RVActivity.class);
@@ -54,6 +56,17 @@ public class MainActivity extends AppCompatActivity {
         btn_open2.setOnClickListener(v->
         {
             Intent intent = new Intent(MainActivity.this,RVActivity2.class);
+            startActivity(intent);
+        });
+
+        btn_open3.setOnClickListener(v->
+        {
+            Intent intent = new Intent(MainActivity.this,RVActivity3.class);
+            startActivity(intent);
+        });
+        btn_open4.setOnClickListener(v->
+        {
+            Intent intent = new Intent(MainActivity.this,RVActivity4.class);
             startActivity(intent);
         });
 

@@ -14,12 +14,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RVActivity extends AppCompatActivity
+public class RVActivity4 extends AppCompatActivity
 {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
-    RVAdapter adapter;
-    DAOEmployee dao;
+    RVAdapter4 adapter;
+    DAORoom daoFour;
     boolean isLoading=false;
     String key =null;
     @Override
@@ -32,12 +32,9 @@ public class RVActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        adapter= new RVAdapter(this);
+        adapter= new RVAdapter4(this);
         recyclerView.setAdapter(adapter);
-
-
-
-        dao = new DAOEmployee();
+        daoFour = new DAORoom();
         loadData();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
         {
@@ -63,20 +60,20 @@ public class RVActivity extends AppCompatActivity
     {
 
         swipeRefreshLayout.setRefreshing(true);
-        dao.get(key).addListenerForSingleValueEvent(new ValueEventListener()
+        daoFour.get(key).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                ArrayList<Employee> emps = new ArrayList<>();
+                ArrayList<Room> rooms = new ArrayList<>();
                 for (DataSnapshot data : snapshot.getChildren())
                 {
-                    Employee emp = data.getValue(Employee.class);
-                    emp.setKey(data.getKey());
-                    emps.add(emp);
+                    Room room = data.getValue(Room.class);
+                    room.setKey(data.getKey());
+                    rooms.add(room);
                     key = data.getKey();
                 }
-                adapter.setItems(emps);
+                adapter.setItems(rooms);
                 adapter.notifyDataSetChanged();
                 isLoading =false;
                 swipeRefreshLayout.setRefreshing(false);

@@ -15,9 +15,9 @@ public class DAOPosition
         FirebaseDatabase db =FirebaseDatabase.getInstance();
         databaseReference = db.getReference(Position.class.getSimpleName());
     }
-    public Task<Void> add(Position emp)
+    public Task<Void> add(Position pos)
     {
-        return databaseReference.push().setValue(emp);
+        return databaseReference.push().setValue(pos);
     }
 
     public Task<Void> update(String key, HashMap<String ,Object> hashMap)

@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class openElementThree extends AppCompatActivity {
 
@@ -21,14 +24,49 @@ public class openElementThree extends AppCompatActivity {
         EditText editTextTwo = findViewById(R.id.elementEdit32);
         EditText editTextThree = findViewById(R.id.elementEdit33);
         Button buttonUpload = findViewById(R.id.elementButton);
-        DAORoom daoThree = new DAORoom();
+        DAOComputer daoThree = new DAOComputer();
+        Computer com_edit = (Computer)getIntent().getSerializableExtra("EDIT");
+        if(com_edit != null)
+        {
+            buttonUpload.setText("UPDATE");
+            editTextOne.setText(com_edit.getComName());
+            editTextTwo.setText(com_edit.getYear());
+            editTextThree.setText(com_edit.getNeedsFixing());
+
+        }
+        else{
+            buttonUpload.setText("SUBMIT");
+
+        }
+
         buttonUpload.setOnClickListener(v->{
-            Room roo = new Room(editTextOne.getText().toString(),editTextTwo.getText().toString(),editTextThree.getText().toString());
-            daoThree.add(roo).addOnSuccessListener(suc->{
-                Toast.makeText(this,"Record inserted", Toast.LENGTH_SHORT).show();
-            }).addOnFailureListener(er->{
-                Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
-            });
+            Computer com = new Computer(editTextOne.getText().toString(),editTextTwo.getText().toString(),editTextThree.getText().toString());
+            if(com_edit==null) {
+                daoThree.add(com).addOnSuccessListener(suc -> {
+                    Toast.makeText(this, "Record inserted", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(er -> {
+                    Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+            else
+            {
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("name", editTextOne.getText().toString());
+                hashMap.put("position", editTextTwo.getText().toString());
+                hashMap.put("age", editTextThree.getText().toString());
+                daoThree.update(com_edit.getKey(), hashMap).addOnSuccessListener(suc->{
+                    Toast.makeText(this,"record is updated", Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }).addOnFailureListener(er->{
+                    Toast.makeText(this, ""+ er.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
         });
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+
+
     }
 }

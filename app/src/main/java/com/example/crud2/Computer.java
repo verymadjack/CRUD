@@ -1,6 +1,12 @@
 package com.example.crud2;
 
-public class Computer {
+import com.google.firebase.database.Exclude;
+
+import java.io.Serializable;
+
+public class Computer implements Serializable {
+    @Exclude
+    private String key;
     private String name;
     private String year;
     private String needsFixing;
@@ -11,11 +17,11 @@ public class Computer {
         this.needsFixing = needsFixing;
     }
 
-    public String getName() {
+    public String getComName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setComName(String name) {
         this.name = name;
     }
 
@@ -33,5 +39,13 @@ public class Computer {
 
     public void setNeedsFixing(String needsFixing) {
         this.needsFixing = needsFixing;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

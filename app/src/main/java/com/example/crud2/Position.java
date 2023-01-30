@@ -1,14 +1,12 @@
 package com.example.crud2;
 
-public class Position {
-    public String getKey() {
-        return key;
-    }
+import com.google.firebase.database.Exclude;
 
-    public void setKey(String key) {
-        this.key = key;
-    }
+import java.io.Serializable;
 
+public class Position implements Serializable {
+
+    @Exclude
     private String key;
     private String name;
     private String salary;
@@ -43,4 +41,14 @@ public class Position {
     public void setHours(String hours) {
         this.hours = hours;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+
 }

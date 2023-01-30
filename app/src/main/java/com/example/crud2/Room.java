@@ -1,6 +1,13 @@
 package com.example.crud2;
 
-public class Room {
+import com.google.firebase.database.Exclude;
+
+import java.io.Serializable;
+
+public class Room implements Serializable {
+
+    @Exclude
+    private String key;
     private String number;
     private String hasWiFi;
     private String isSecured;
@@ -33,5 +40,13 @@ public class Room {
 
     public void setIsSecured(String isSecured) {
         this.isSecured = isSecured;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

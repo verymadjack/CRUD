@@ -14,17 +14,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RVActivity extends AppCompatActivity
-{
+public class RVActivity3 extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
-    RVAdapter adapter;
-    DAOEmployee dao;
-    boolean isLoading=false;
-    String key =null;
+    RVAdapter3 adapter;
+    DAOComputer dao;
+    boolean isLoading = false;
+    String key = null;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rv);
         swipeRefreshLayout = findViewById(R.id.swip);
@@ -32,26 +31,21 @@ public class RVActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        adapter= new RVAdapter(this);
+        adapter = new RVAdapter3(this);
         recyclerView.setAdapter(adapter);
 
 
-
-        dao = new DAOEmployee();
+        dao = new DAOComputer();
         loadData();
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
-        {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
-            {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 int totalItem = linearLayoutManager.getItemCount();
                 int lastVisible = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                if(totalItem< lastVisible+3)
-                {
-                    if(!isLoading)
-                    {
-                        isLoading=true;
+                if (totalItem < lastVisible + 3) {
+                    if (!isLoading) {
+                        isLoading = true;
                         loadData();
                     }
                 }
@@ -59,32 +53,27 @@ public class RVActivity extends AppCompatActivity
         });
     }
 
-    private void loadData()
-    {
+    private void loadData() {
 
         swipeRefreshLayout.setRefreshing(true);
-        dao.get(key).addListenerForSingleValueEvent(new ValueEventListener()
-        {
+        dao.get(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                ArrayList<Employee> emps = new ArrayList<>();
-                for (DataSnapshot data : snapshot.getChildren())
-                {
-                    Employee emp = data.getValue(Employee.class);
-                    emp.setKey(data.getKey());
-                    emps.add(emp);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Computer> coms = new ArrayList<>();
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    Computer com = data.getValue(Computer.class);
+                    com.setKey(data.getKey());
+                    coms.add(com);
                     key = data.getKey();
                 }
-                adapter.setItems(emps);
+                adapter.setItems(coms);
                 adapter.notifyDataSetChanged();
-                isLoading =false;
+                isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
+            public void onCancelled(@NonNull DatabaseError error) {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
