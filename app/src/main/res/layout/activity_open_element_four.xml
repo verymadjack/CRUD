@@ -16,7 +16,7 @@
         android:layout_marginBottom="529dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Room Number" />
 
     <EditText
         android:id="@+id/elementEdit42"
@@ -28,7 +28,7 @@
         android:layout_marginBottom="466dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Has WiFi" />
 
     <EditText
         android:id="@+id/elementEdit43"
@@ -40,7 +40,7 @@
         android:layout_marginBottom="395dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Is Secured" />
 
     <Button
         android:id="@+id/elementButton"
@@ -50,5 +50,5 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="366dp"
         android:layout_marginBottom="317dp"
-        android:text="Button" />
+        android:text="Submit" />
 </RelativeLayout>
